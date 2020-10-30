@@ -8,7 +8,12 @@
     - name: Get interfaces
       debug: 
         var: ansible_facts['interfaces']
-    - name: Copy vimrc
+    - name: Copy dotfiles
       copy:
-          src: ./vimrc
-          dest: ~/.vimrc
+        src: "./{{ item }}"
+        dest: "~/.{{ item }}"
+      loop:
+        - zshrc
+        - vimrc
+        - gvimrc
+        
