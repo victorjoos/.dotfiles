@@ -1,0 +1,14 @@
+---
+- name: test
+  hosts: localhost
+  tasks:
+    - name: Debug ipv4 addresses
+      debug: 
+        var: ansible_facts['all_ipv4_addresses']
+    - name: Get interfaces
+      debug: 
+        var: ansible_facts['interfaces']
+    - name: Copy vimrc
+      copy:
+          src: ./vimrc
+          dest: ~/.vimrc
